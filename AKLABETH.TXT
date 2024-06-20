@@ -1,7 +1,7 @@
  0  ONERR  GOTO 4
  1  REM 
- 4  PR# 0: rem IN# 0
- 5  rem HIMEM: 49151
+ 4  PR# 0: IN# 0
+ 5  HIMEM: 49151
  7  CLEAR : GOSUB 60000
  8 ZZ =  RND ( -  ABS (LN))
  9 LEVEL = 0
