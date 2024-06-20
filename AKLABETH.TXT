@@ -1,346 +1,152 @@
  0  ONERR  GOTO 4
  1  REM 
- 4  PR# 0: IN# 0
- 5  HIMEM: 49151
+ 4  PR# 0: rem IN# 0
+ 5  rem HIMEM: 49151
  7  CLEAR : GOSUB 60000
  8 ZZ =  RND ( -  ABS (LN))
  9 LEVEL = 0
- 10  TEXT : HOME : NORMAL : VTAB (12): PRINT " WELCOME TO AKALABETH, WORL
-     D OF DOOM!"
- 20  DIM DN%(10,10),TE%(20,20),XX%(10),YY%(10),PER%(10,3),LD%(10,5),CD%(1
-     0,3),FT%(10,5),LAD%(10,3)
- 30  FOR X = 0 TO 20:TE%(X,0) = 1:TE%(0,X) = 1:TE%(X,20) = 1:TE%(20,X) = 
-     1: NEXT 
+ 10  TEXT : HOME : NORMAL : VTAB (12): PRINT " WELCOME TO AKALABETH, WORLD OF DOOM!"
+ 20  DIM DN%(10,10),TE%(20,20),XX%(10),YY%(10),PER%(10,3),LD%(10,5),CD%(10,3),FT%(10,5),LAD%(10,3)
+ 30  FOR X = 0 TO 20:TE%(X,0) = 1:TE%(0,X) = 1:TE%(X,20) = 1:TE%(20,X) = 1: NEXT 
  35 : VTAB (23): PRINT "  (PLEASE WAIT)";
- 40  FOR X = 1 TO 19: FOR Y = 1 TO 19:TE%(X,Y) =  INT ( RND (1) ^ 5 * 4.5
-     )
+ 40  FOR X = 1 TO 19: FOR Y = 1 TO 19:TE%(X,Y) =  INT ( RND (1) ^ 5 * 4.5 )
  41  IF TE%(X,Y) = 3 AND  RND (1) > .5 THEN TE%(X,Y) = 0
  42  NEXT : PRINT ".";: NEXT 
- 50 TE%( INT ( RND (1) * 19 + 1), INT ( RND (1) * 19 + 1)) = 5:TX =  INT 
-     ( RND (1) * 19 + 1):TY =  INT ( RND (1) * 19 + 1):TE%(TX,TY) = 3
+ 50 TE%( INT ( RND (1) * 19 + 1), INT ( RND (1) * 19 + 1)) = 5:TX =  INT ( RND (1) * 19 + 1):TY =  INT ( RND (1) * 19 + 1):TE%(TX,TY) = 3
  51 XX%(0) = 139:YY%(0) = 79
- 52  FOR X = 2 TO 20 STEP 2:XX%(X / 2) =  INT ( ATN (1 / X) /  ATN (1) * 
-     140 + .5):YY%(X / 2) =  INT (XX%(X / 2) * 4 / 7)
- 53 PER%(X / 2,0) = 139 - XX%(X / 2):PER%(X / 2,1) = 139 + XX%(X / 2):PER
-     %(X / 2,2) = 79 - YY%(X / 2):PER%(X / 2,3) = 79 + YY%(X / 2): NEXT 
+ 52  FOR X = 2 TO 20 STEP 2:XX%(X / 2) =  INT ( ATN (1 / X) /  ATN (1) * 140 + .5):YY%(X / 2) =  INT (XX%(X / 2) * 4 / 7)
+ 53 PER%(X / 2,0) = 139 - XX%(X / 2):PER%(X / 2,1) = 139 + XX%(X / 2):PER%(X / 2,2) = 79 - YY%(X / 2):PER%(X / 2,3) = 79 + YY%(X / 2): NEXT 
  54 PER%(0,0) = 0:PER%(0,1) = 279:PER%(0,2) = 0:PE%(0,3) = 159
- 55  FOR X = 1 TO 10:CD%(X,0) = 139 - XX%(X) / 3:CD%(X,1) = 139 + XX%(X) / 
-     3:CD%(X,2) = 79 - YY%(X) * .7:CD%(X,3) = 79 + YY%(X): NEXT : PRINT "
-     .";
- 56  FOR X = 0 TO 9:LD%(X,0) = (PER%(X,0) * 2 + PER%(X + 1,0)) / 3:LD%(X,
-     1) = (PER%(X,0) + 2 * PER%(X + 1,0)) / 3:W = LD%(X,0) - PE%(X,0)
- 57 LD%(X,2) = PE%(X,2) + W * 4 / 7:LD%(X,3) = PER%(X,2) + 2 * W * 4 / 7:
-     LD%(X,4) = (PE%(X,3) * 2 + PE%(X + 1,3)) / 3:LD%(X,5) = (PE%(X,3) + 
-     2 * PE%(X + 1,3)) / 3
- 58 LD%(X,2) = LD%(X,4) - (LD%(X,4) - LD%(X,2)) * .8:LD%(X,3) = LD%(X,5) - 
-     (LD%(X,5) - LD%(X,3)) * .8: IF LD%(X,3) = LD%(X,4) THEN LD%(X,3) = L
-     D%(X,3) - 1
+ 55  FOR X = 1 TO 10:CD%(X,0) = 139 - XX%(X) / 3:CD%(X,1) = 139 + XX%(X) / 3:CD%(X,2) = 79 - YY%(X) * .7:CD%(X,3) = 79 + YY%(X): NEXT : PRINT ".";
+ 56  FOR X = 0 TO 9:LD%(X,0) = (PER%(X,0) * 2 + PER%(X + 1,0)) / 3:LD%(X,1) = (PER%(X,0) + 2 * PER%(X + 1,0)) / 3:W = LD%(X,0) - PE%(X,0)
+ 57 LD%(X,2) = PE%(X,2) + W * 4 / 7:LD%(X,3) = PER%(X,2) + 2 * W * 4 / 7:LD%(X,4) = (PE%(X,3) * 2 + PE%(X + 1,3)) / 3:LD%(X,5) = (PE%(X,3) + 2 * PE%(X + 1,3)) / 3
+ 58 LD%(X,2) = LD%(X,4) - (LD%(X,4) - LD%(X,2)) * .8:LD%(X,3) = LD%(X,5) - (LD%(X,5) - LD%(X,3)) * .8: IF LD%(X,3) = LD%(X,4) THEN LD%(X,3) = LD%(X,3) - 1
  59  NEXT 
- 60  FOR X = 0 TO 9:FT%(X,0) = 139 - XX%(X) / 3:FT%(X,1) = 139 + XX%(X) / 
-     3:FT%(X,2) = 139 - XX%(X + 1) / 3:FT%(X,3) = 139 + XX%(X + 1) / 3
- 61 FT%(X,4) = 79 + (YY%(X) * 2 + YY%(X + 1)) / 3:FT%(X,5) = 79 + (YY%(X)
-      + 2 * YY%(X + 1)) / 3: NEXT 
- 62  FOR X = 0 TO 9:LAD%(X,0) = (FT%(X,0) * 2 + FT%(X,1)) / 3:LAD%(X,1) = 
-     (FT%(X,0) + 2 * FT%(X,1)) / 3:LAD%(X,3) = FT%(X,4):LAD%(X,2) = 159 - 
-     LAD%(X,3): NEXT 
+ 60  FOR X = 0 TO 9:FT%(X,0) = 139 - XX%(X) / 3:FT%(X,1) = 139 + XX%(X) / 3:FT%(X,2) = 139 - XX%(X + 1) / 3:FT%(X,3) = 139 + XX%(X + 1) / 3
+ 61 FT%(X,4) = 79 + (YY%(X) * 2 + YY%(X + 1)) / 3:FT%(X,5) = 79 + (YY%(X) + 2 * YY%(X + 1)) / 3: NEXT 
+ 62  FOR X = 0 TO 9:LAD%(X,0) = (FT%(X,0) * 2 + FT%(X,1)) / 3:LAD%(X,1) = (FT%(X,0) + 2 * FT%(X,1)) / 3:LAD%(X,3) = FT%(X,4):LAD%(X,2) = 159 - LAD%(X,3): NEXT 
  68  HOME : HCOLOR= 3
  69  POKE 34,20: POKE 33,29: HOME 
  70  GOSUB 100: GOTO 1000
- 90  FOR X = 0 TO 9: FOR Y = 0 TO 5: PRINT LD%(X,Y);" ";: NEXT : PRINT : NEXT 
-     : GET Q$
+ 90  FOR X = 0 TO 9: FOR Y = 0 TO 5: PRINT LD%(X,Y);" ";: NEXT : PRINT : NEXT : GET Q$
  100  HGR : FOR Y =  - 1 TO 1: FOR X =  - 1 TO 1
  105  HPLOT 138,75 TO 142,75: HPLOT 140,73 TO 140,77
  110 ZZ = TER%(TX + X,TY + Y):X1 = 65 + (X + 1) * 50:Y1 = (Y + 1) * 50
- 120  IF ZZ = 2 THEN  HPLOT X1 + 20,Y1 + 20 TO X1 + 30,Y1 + 20 TO X1 + 30
-     ,Y1 + 30 TO X1 + 20,Y1 + 30 TO X1 + 20,Y1 + 20
- 130  IF ZZ = 3 THEN  HPLOT X1 + 10,Y1 + 10 TO X1 + 20,Y1 + 10 TO X1 + 20
-     ,Y1 + 40 TO X1 + 10,Y1 + 40 TO X1 + 10,Y1 + 30 TO X1 + 40,Y1 + 30 TO 
-     X1 + 40,Y1 + 40 TO X1 + 30,Y1 + 40 TO X1 + 30,Y1 + 10 TO X1 + 40,Y1 + 
-     10 TO X1 + 40,Y1 + 20 TO X1 + 10,Y1 + 20 TO X1 + 10,Y1 + 10
- 140  IF ZZ = 4 THEN  HPLOT X1 + 20,Y1 + 20 TO X1 + 30,Y1 + 30: HPLOT X1 + 
-     20,Y1 + 30 TO X1 + 30,Y1 + 20
- 150  IF ZZ = 5 THEN  HPLOT X1,Y1 TO X1 + 50,Y1 TO X1 + 50,Y1 + 50 TO X1,
-     Y1 + 50 TO X1,Y1: HPLOT X1 + 10,Y1 + 10 TO X1 + 10,Y1 + 40 TO X1 + 4
-     0,Y1 + 40 TO X1 + 40,Y1 + 10 TO X1 + 10,Y1 + 10 TO X1 + 40,Y1 + 40: HPLOT 
-     X1 + 10,Y1 + 40 TO X1 + 40,Y1 + 10
- 160  IF ZZ = 1 THEN  HPLOT X1 + 10,Y1 + 50 TO X1 + 10,Y1 + 40 TO X1 + 20
-     ,Y1 + 30 TO X1 + 40,Y1 + 30 TO X1 + 40,Y1 + 50: HPLOT X1,Y1 + 10 TO 
-     X1 + 10,Y1 + 10: HPLOT X1 + 50,Y1 + 10 TO X1 + 40,Y1 + 10: HPLOT X1,
-     Y1 + 40 TO X1 + 10,Y1 + 40: HPLOT X1 + 40,Y1 + 40 TO X1 + 50,Y1 + 40
-     
- 170  IF ZZ = 1 THEN  HPLOT X1 + 10,Y1 TO X1 + 10,Y1 + 20 TO X1 + 20,Y1 + 
-     20 TO X1 + 20,Y1 + 30 TO X1 + 30,Y1 + 30 TO X1 + 30,Y1 + 10 TO X1 + 
-     40,Y1 + 10 TO X1 + 40,Y1
+ 120  IF ZZ = 2 THEN  HPLOT X1 + 20,Y1 + 20 TO X1 + 30,Y1 + 20 TO X1 + 30,Y1 + 30 TO X1 + 20,Y1 + 30 TO X1 + 20,Y1 + 20
+ 130  IF ZZ = 3 THEN  HPLOT X1 + 10,Y1 + 10 TO X1 + 20,Y1 + 10 TO X1 + 20,Y1 + 40 TO X1 + 10,Y1 + 40 TO X1 + 10,Y1 + 30 TO X1 + 40,Y1 + 30 TO X1 + 40,Y1 + 40 TO X1 + 30,Y1 + 40 TO X1 + 30,Y1 + 10 TO X1 + 40,Y1 + 10 TO X1 + 40,Y1 + 20 TO X1 + 10,Y1 + 20 TO X1 + 10,Y1 + 10
+ 140  IF ZZ = 4 THEN  HPLOT X1 + 20,Y1 + 20 TO X1 + 30,Y1 + 30: HPLOT X1 + 20,Y1 + 30 TO X1 + 30,Y1 + 20
+ 150  IF ZZ = 5 THEN  HPLOT X1,Y1 TO X1 + 50,Y1 TO X1 + 50,Y1 + 50 TO X1,Y1 + 50 TO X1,Y1: HPLOT X1 + 10,Y1 + 10 TO X1 + 10,Y1 + 40 TO X1 + 40,Y1 + 40 TO X1 + 40,Y1 + 10 TO X1 + 10,Y1 + 10 TO X1 + 40,Y1 + 40: HPLOT X1 + 10,Y1 + 40 TO X1 + 40,Y1 + 10
+ 160  IF ZZ = 1 THEN  HPLOT X1 + 10,Y1 + 50 TO X1 + 10,Y1 + 40 TO X1 + 20,Y1 + 30 TO X1 + 40,Y1 + 30 TO X1 + 40,Y1 + 50: HPLOT X1,Y1 + 10 TO X1 + 10,Y1 + 10: HPLOT X1 + 50,Y1 + 10 TO X1 + 40,Y1 + 10: HPLOT X1,Y1 + 40 TO X1 + 10,Y1 + 40: HPLOT X1 + 40,Y1 + 40 TO X1 + 50,Y1 + 40
+ 170  IF ZZ = 1 THEN  HPLOT X1 + 10,Y1 TO X1 + 10,Y1 + 20 TO X1 + 20,Y1 + 20 TO X1 + 20,Y1 + 30 TO X1 + 30,Y1 + 30 TO X1 + 30,Y1 + 10 TO X1 + 40,Y1 + 10 TO X1 + 40,Y1
  190  NEXT : NEXT : RETURN 
  200  HGR :DIS = 0: HCOLOR= 3
- 202 CENT = DNG%(PX + DX * DIS,PY + DY * DIS):LEFT = DNG%(PX + DX * DIS + 
-     DY,PY + DY * DIS - DX):RIGH = DNG%(PX + DX * DIS - DY,PY + DY * DIS + 
-     DX)
- 204 L1 = PER%(DIS,0):R1 = PER%(DIS,1):T1 = PER%(DIS,2):B1 = PER%(DIS,3):
-     L2 = PER%(DIS + 1,0):R2 = PER%(DIS + 1,1):T2 = PER%(DIS + 1,2):B2 = 
-     PER%(DIS + 1,3)
+ 202 CENT = DNG%(PX + DX * DIS,PY + DY * DIS):LEFT = DNG%(PX + DX * DIS + DY,PY + DY * DIS - DX):RIGH = DNG%(PX + DX * DIS - DY,PY + DY * DIS + DX)
+ 204 L1 = PER%(DIS,0):R1 = PER%(DIS,1):T1 = PER%(DIS,2):B1 = PER%(DIS,3):L2 = PER%(DIS + 1,0):R2 = PER%(DIS + 1,1):T2 = PER%(DIS + 1,2):B2 = PER%(DIS + 1,3)
  205 CENT =  INT (CENT):LEFT =  INT (LEFT):RIGHT =  INT (RIGHT)
- 206 MC =  INT (CENT / 10):CENT = CENT - MC * 10:LEFT =  INT ((LEFT / 10 - 
-      INT (LEF / 10)) * 10 + .1):RIGH =  INT ((RIGH / 10 -  INT (RIG / 10
-     )) * 10 + .1)
+ 206 MC =  INT (CENT / 10):CENT = CENT - MC * 10:LEFT =  INT ((LEFT / 10 - INT (LEF / 10)) * 10 + .1):RIGH =  INT ((RIGH / 10 -  INT (RIG / 10 )) * 10 + .1)
  208  IF DIS = 0 THEN 216
- 210  IF CENT = 1 OR CENT = 3 OR CENT = 4 THEN  HPLOT L1,T1 TO R1,T1 TO R
-     1,B1 TO L1,B1 TO L1,T1
+ 210  IF CENT = 1 OR CENT = 3 OR CENT = 4 THEN  HPLOT L1,T1 TO R1,T1 TO R1,B1 TO L1,B1 TO L1,T1
  212  IF CENT = 1 OR CENT = 3 THEN EN = 1: GOTO 260
- 214  IF CENT = 4 THEN  HPLOT CD%(DIS,0),CD%(DIS,3) TO CD%(DIS,0),CD%(DIS
-     ,2) TO CD%(DIS,1),CD%(DIS,2) TO CD%(DIS,1),CD%(DIS,3):EN = 1: GOTO 2
-     60
- 216  IF LEFT = 1 OR LEFT = 3 OR LEFT = 4 THEN  HPLOT L1,T1 TO L2,T2: HPLOT 
-     L1,B1 TO L2,B2
- 218  IF RIGH = 1 OR RIGH = 3 OR RIGH = 4 THEN  HPLOT R1,T1 TO R2,T2: HPLOT 
-     R1,B1 TO R2,B2
- 220  IF LEFT = 4 AND DIS > 0 THEN  HPLOT LD%(DIS,0),LD%(DIS,4) TO LD%(DI
-     S,0),LD%(DIS,2) TO LD%(DIS,1),LD%(DIS,3) TO LD%(DIS,1),LD%(DIS,5)
- 222  IF LEFT = 4 AND DIS = 0 THEN  HPLOT 0,LD%(DIS,2) - 3 TO LD%(DIS,1),
-     LD%(DIS,3) TO LD%(DIS,1),LD%(DIS,5)
- 224  IF RIGH = 4 AND DIS > 0 THEN  HPLOT 279 - LD%(DIS,0),LD%(DIS,4) TO 
-     279 - LD%(DIS,0),LD%(DIS,2) TO 279 - LD%(DIS,1),LD%(DIS,3) TO 279 - 
-     LD%(DIS,1),LD%(DIS,5)
- 226  IF RIGH = 4 AND DIS = 0 THEN  HPLOT 279,LD%(DIS,2) - 3 TO 279 - LD%
-     (DIS,1),LD%(DIS,3) TO 279 - LD%(DIS,1),LD%(DIS,5)
+ 214  IF CENT = 4 THEN  HPLOT CD%(DIS,0),CD%(DIS,3) TO CD%(DIS,0),CD%(DIS,2) TO CD%(DIS,1),CD%(DIS,2) TO CD%(DIS,1),CD%(DIS,3):EN = 1: GOTO 260
+ 216  IF LEFT = 1 OR LEFT = 3 OR LEFT = 4 THEN  HPLOT L1,T1 TO L2,T2: HPLOT L1,B1 TO L2,B2
+ 218  IF RIGH = 1 OR RIGH = 3 OR RIGH = 4 THEN  HPLOT R1,T1 TO R2,T2: HPLOT R1,B1 TO R2,B2
+ 220  IF LEFT = 4 AND DIS > 0 THEN  HPLOT LD%(DIS,0),LD%(DIS,4) TO LD%(DIS,0),LD%(DIS,2) TO LD%(DIS,1),LD%(DIS,3) TO LD%(DIS,1),LD%(DIS,5)
+ 222  IF LEFT = 4 AND DIS = 0 THEN  HPLOT 0,LD%(DIS,2) - 3 TO LD%(DIS,1),LD%(DIS,3) TO LD%(DIS,1),LD%(DIS,5)
+ 224  IF RIGH = 4 AND DIS > 0 THEN  HPLOT 279 - LD%(DIS,0),LD%(DIS,4) TO 279 - LD%(DIS,0),LD%(DIS,2) TO 279 - LD%(DIS,1),LD%(DIS,3) TO 279 - LD%(DIS,1),LD%(DIS,5)
+ 226  IF RIGH = 4 AND DIS = 0 THEN  HPLOT 279,LD%(DIS,2) - 3 TO 279 - LD%(DIS,1),LD%(DIS,3) TO 279 - LD%(DIS,1),LD%(DIS,5)
  228  IF LEFT = 3 OR LEFT = 1 OR LEFT = 4 THEN 234
  230  IF DIS <  > 0 THEN  HPLOT L1,T1 TO L1,B1
  232  HPLOT L1,T2 TO L2,T2 TO L2,B2 TO L1,B2
  234  IF RIGH = 3 OR RIGH = 1 OR RIGH = 4 THEN 240
  236  IF DIS <  > 0 THEN  HPLOT R1,T1 TO R1,B1
  238  HPLOT R1,T2 TO R2,T2 TO R2,B2 TO R1,B2
- 240  IF CENT = 7 OR CENT = 9 THEN  HPLOT FT%(DIS,0),FT%(DIS,4) TO FT%(DI
-     S,2),FT%(DIS,5) TO FT%(DIS,3),FT%(DIS,5) TO FT%(DIS,1),FT%(DIS,4) TO 
-     FT%(DIS,0),FT%(DIS,4)
- 242  IF CENT = 8 THEN  HPLOT FT%(DIS,0),158 - FT%(DIS,4) TO FT%(DIS,2),1
-     58 - FT%(DIS,5) TO FT%(DIS,3),158 - FT%(DIS,5) TO FT%(DIS,1),158 - F
-     T%(DIS,4) TO FT%(DIS,0),158 - FT%(DIS,4)
- 244  IF CENT = 7 OR CENT = 8 THEN BASE = LAD%(DIS,3):TP = LAD%(DIS,2):LX
-      = LAD%(DIS,0):RX = LAD%(DIS,1): HPLOT LX,BA TO LX,TP: HPLOT RX,TP TO 
-     RX,BA
- 246  IF CENT = 7 OR CENT = 8 THEN Y1 = (BA * 4 + TP) / 5:Y2 = (BA * 3 + 
-     TP * 2) / 5:Y3 = (BA * 2 + TP * 3) / 5:Y4 = (BA + TP * 4) / 5: HPLOT 
-     LX,Y1 TO RX,Y1: HPLOT LX,Y2 TO RX,Y2: HPLOT LX,Y3 TO RX,Y3: HPLOT LX
-     ,Y4 TO RX,Y4
- 248  IF DIS > 0 AND CENT = 5 THEN  HPLOT 139 - 10 / DIS,PER%(DIS,3) TO 1
-     39 - 10 / DIS,PER%(DIS,3) - 10 / DIS TO 139 + 10 / DIS,PER%(DIS,3) - 
-     10 / DIS TO 139 + 10 / DIS,PER%(DIS,3) TO 139 - 10 / DIS,PER%(DIS,3)
-     
+ 240  IF CENT = 7 OR CENT = 9 THEN  HPLOT FT%(DIS,0),FT%(DIS,4) TO FT%(DIS,2),FT%(DIS,5) TO FT%(DIS,3),FT%(DIS,5) TO FT%(DIS,1),FT%(DIS,4) TO FT%(DIS,0),FT%(DIS,4)
+ 242  IF CENT = 8 THEN  HPLOT FT%(DIS,0),158 - FT%(DIS,4) TO FT%(DIS,2),158 - FT%(DIS,5) TO FT%(DIS,3),158 - FT%(DIS,5) TO FT%(DIS,1),158 - FT%(DIS,4) TO FT%(DIS,0),158 - FT%(DIS,4)
+ 244  IF CENT = 7 OR CENT = 8 THEN BASE = LAD%(DIS,3):TP = LAD%(DIS,2):LX = LAD%(DIS,0):RX = LAD%(DIS,1): HPLOT LX,BA TO LX,TP: HPLOT RX,TP TO RX,BA
+ 246  IF CENT = 7 OR CENT = 8 THEN Y1 = (BA * 4 + TP) / 5:Y2 = (BA * 3 + TP * 2) / 5:Y3 = (BA * 2 + TP * 3) / 5:Y4 = (BA + TP * 4) / 5: HPLOT LX,Y1 TO RX,Y1: HPLOT LX,Y2 TO RX,Y2: HPLOT LX,Y3 TO RX,Y3: HPLOT LX,Y4 TO RX,Y4
+ 248  IF DIS > 0 AND CENT = 5 THEN  HPLOT 139 - 10 / DIS,PER%(DIS,3) TO 139 - 10 / DIS,PER%(DIS,3) - 10 / DIS TO 139 + 10 / DIS,PER%(DIS,3) - 10 / DIS TO 139 + 10 / DIS,PER%(DIS,3) TO 139 - 10 / DIS,PER%(DIS,3)
  249  IF CENT = 5 AND DIS > 0 THEN  INVERSE : PRINT "CHEST!": NORMAL 
- 250  IF DIS > 0 AND CENT = 5 THEN  HPLOT 139 - 10 / DIS,PER%(DIS,3) - 10
-      / DIS TO 139 - 5 / DIS,PER%(DIS,3) - 15 / DIS TO 139 + 15 / DIS,PER
-     %(DIS,3) - 15 / DIS TO 139 + 15 / DIS,PER%(DIS,3) - 5 / DIS TO 139 + 
-     10 / DIS,PER%(DIS,3)
- 252  IF DIS > 0 AND CENT = 5 THEN  HPLOT 139 + 10 / DIS,PER%(DIS,3) - 10
-      / DIS TO 139 + 15 / DIS,PER%(DIS,3) - 15 / DIS
+ 250  IF DIS > 0 AND CENT = 5 THEN  HPLOT 139 - 10 / DIS,PER%(DIS,3) - 10 / DIS TO 139 - 5 / DIS,PER%(DIS,3) - 15 / DIS TO 139 + 15 / DIS,PER%(DIS,3) - 15 / DIS TO 139 + 15 / DIS,PER%(DIS,3) - 5 / DIS TO 139 + 10 / DIS,PER%(DIS,3)
+ 252  IF DIS > 0 AND CENT = 5 THEN  HPLOT 139 + 10 / DIS,PER%(DIS,3) - 10 / DIS TO 139 + 15 / DIS,PER%(DIS,3) - 15 / DIS
  260  IF MC < 1 THEN 490
  265 B = 79 + YY%(DIS):C = 139
- 266  INVERSE : IF MC = 8 THEN  PRINT "CHEST!";: CALL  - 868: PRINT : NORMAL 
-     : GOTO 269
+ 266  INVERSE : IF MC = 8 THEN  PRINT "CHEST!";: CALL  - 868: PRINT : NORMAL : GOTO 269
  267  PRINT M$(MC);: CALL  - 868: PRINT : NORMAL 
  269  IF DIS = 0 THEN 490
  270  ON MC GOTO 300,310,320,330,340,350,360,370,380,390
  280  GOTO 490
- 300  HPLOT C - 23 / DIS,B TO C - 15 / DIS,B TO C - 15 / DI,B - 15 / DI TO 
-     C - 8 / DI,B - 30 / DI TO C + 8 / DI,B - 30 / DI TO C + 15 / DI,B - 
-     15 / DI TO C + 15 / DI,B TO C + 23 / DI,B
- 301  HPLOT C,B - 26 / DI TO C,B - 65 / DI: HPLOT C - 2 / DI + .5,B - 38 / 
-     DI TO C + 2 / DI + .5,B - 38 / DI: HPLOT C - 3 / DI + .5,B - 45 / DI
-      TO C + 3 / DI + .5,B - 45 / DI: HPLOT C - 5 / DI + .5,B - 53 / DI TO 
-     C + 5 / DI + .5,B - 53 / DI
- 302  HPLOT C - 23 / DI,B - 56 / DI TO C - 30 / DI,B - 53 / DI TO C - 23 / 
-     DI,B - 45 / DI TO C - 23 / DI,B - 53 / DI TO C - 8 / DI,B - 38 / DI
- 303  HPLOT C - 15 / DI,B - 45 / DI TO C - 8 / DI,B - 60 / DI TO C + 8 / 
-     DI,B - 60 / DI TO C + 15 / DI,B - 45 / DI: HPLOT C + 15 / DI,B - 42 / 
-     DI TO C + 15 / DI,B - 57 / DI: HPLOT C + 12 / DI,B - 45 / DI TO C + 
-     20 / DI,B - 45 / DI
- 304  HPLOT C,B - 75 / DI TO C - 5 / DI + .5,B - 80 / DI TO C - 8 / DI,B - 
-     75 / DI TO C - 5 / DI + .5,B - 65 / DI TO C + 5 / DI + .5,B - 65 / D
-     I TO C + 5 / DI + .5,B - 68 / DI TO C - 5 / DI + .5,B - 68 / DI TO C
-      - 5 / DI + .5,B - 65 / DI
- 305  HPLOT  TO C + 5 / DI + .5,B - 65 / DI TO C + 8 / DI,B - 75 / DI TO 
-     C + 5 / DI + .5,B - 80 / DI TO C - 5 / DI + .5,B - 80 / DI: HPLOT C - 
-     5 / DI + .5,B - 72 / DI: HPLOT C + 5 / DI + .5,B - 72 / DI
+ 300  HPLOT C - 23 / DIS,B TO C - 15 / DIS,B TO C - 15 / DI,B - 15 / DI TO C - 8 / DI,B - 30 / DI TO C + 8 / DI,B - 30 / DI TO C + 15 / DI,B - 15 / DI TO C + 15 / DI,B TO C + 23 / DI,B
+ 301  HPLOT C,B - 26 / DI TO C,B - 65 / DI: HPLOT C - 2 / DI + .5,B - 38 / DI TO C + 2 / DI + .5,B - 38 / DI: HPLOT C - 3 / DI + .5,B - 45 / DI TO C + 3 / DI + .5,B - 45 / DI: HPLOT C - 5 / DI + .5,B - 53 / DI TO C + 5 / DI + .5,B - 53 / DI
+ 302  HPLOT C - 23 / DI,B - 56 / DI TO C - 30 / DI,B - 53 / DI TO C - 23 / DI,B - 45 / DI TO C - 23 / DI,B - 53 / DI TO C - 8 / DI,B - 38 / DI
+ 303  HPLOT C - 15 / DI,B - 45 / DI TO C - 8 / DI,B - 60 / DI TO C + 8 / DI,B - 60 / DI TO C + 15 / DI,B - 45 / DI: HPLOT C + 15 / DI,B - 42 / DI TO C + 15 / DI,B - 57 / DI: HPLOT C + 12 / DI,B - 45 / DI TO C + 20 / DI,B - 45 / DI
+ 304  HPLOT C,B - 75 / DI TO C - 5 / DI + .5,B - 80 / DI TO C - 8 / DI,B - 75 / DI TO C - 5 / DI + .5,B - 65 / DI TO C + 5 / DI + .5,B - 65 / DI TO C + 5 / DI + .5,B - 68 / DI TO C - 5 / DI + .5,B - 68 / DI TO C - 5 / DI + .5,B - 65 / DI
+ 305  HPLOT  TO C + 5 / DI + .5,B - 65 / DI TO C + 8 / DI,B - 75 / DI TO C + 5 / DI + .5,B - 80 / DI TO C - 5 / DI + .5,B - 80 / DI: HPLOT C - 5 / DI + .5,B - 72 / DI: HPLOT C + 5 / DI + .5,B - 72 / DI
  309  GOTO 490
- 310  HPLOT C,B - 56 / DI TO C,B - 8 / DI TO C + 10 / DI,B TO C + 30 / DI
-     ,B TO C + 30 / DI,B - 45 / DI TO C + 10 / DI,B - 64 / DI TO C,B - 56
-      / DI
- 311  HPLOT  TO C - 10 / DI,B - 64 / DI TO C - 30 / DI,B - 45 / DI TO C - 
-     30 / DI,B TO C - 10 / DI,B TO C,B - 8 / DI
- 312  HPLOT C - 10 / DI,B - 64 / DI TO C - 10 / DI,B - 75 / DI TO C,B - 8
-     3 / DI TO C + 10 / DI,B - 75 / DI TO C,B - 79 / DI TO C - 10 / DI,B - 
-     75 / DI TO C,B - 60 / DI TO C + 10 / DI,B - 75 / DI TO C + 10 / DI,B
-      - 64 / DI
+ 310  HPLOT C,B - 56 / DI TO C,B - 8 / DI TO C + 10 / DI,B TO C + 30 / DI,B TO C + 30 / DI,B - 45 / DI TO C + 10 / DI,B - 64 / DI TO C,B - 56 / DI
+ 311  HPLOT  TO C - 10 / DI,B - 64 / DI TO C - 30 / DI,B - 45 / DI TO C - 30 / DI,B TO C - 10 / DI,B TO C,B - 8 / DI
+ 312  HPLOT C - 10 / DI,B - 64 / DI TO C - 10 / DI,B - 75 / DI TO C,B - 83 / DI TO C + 10 / DI,B - 75 / DI TO C,B - 79 / DI TO C - 10 / DI,B - 75 / DI TO C,B - 60 / DI TO C + 10 / DI,B - 75 / DI TO C + 10 / DI,B - 64 / DI
  319  GOTO 490
- 320  HPLOT C + 5 / DI,B - 30 / DI TO C,B - 25 / DI TO C - 5 / DI,B - 30 / 
-     DI TO C - 15 / DI,B - 5 / DI TO C - 10 / DI,B TO C + 10 / DI,B TO C + 
-     15 / DI,B - 5 / DI
- 321  HPLOT  TO C + 20 / DI,B - 5 / DI TO C + 10 / DI,B TO C + 15 / DI,B - 
-     5 / DI TO C + 5 / DI,B - 30 / DI TO C + 10 / DI,B - 40 / DI TO C + 3
-      / DI + .5,B - 35 / DI TO C - 3 / DI + .5,B - 35 / DI TO C - 10 / DI
-     ,B - 40 / DI TO C - 5 / DI,B - 30 / DI
- 322  HPLOT C - 5 / DI,B - 33 / DI TO C - 3 / DI + .5,B - 30 / DI: HPLOT 
-     C + 5 / DI,B - 33 / DI TO C + 3 / DI + .5,B - 30 / DI: HPLOT C - 5 / 
-     DI,B - 20 / DI TO C - 5 / DI,B - 15 / DI
- 323  HPLOT C + 5 / DI,B - 20 / DI TO C + 5 / DI,B - 15 / DI: HPLOT C - 7
-      / DI,B - 20 / DI TO C - 7 / DI,B - 15 / DI: HPLOT C + 7 / DI,B - 20
-      / DI TO C + 7 / DI,B - 15 / DI
+ 320  HPLOT C + 5 / DI,B - 30 / DI TO C,B - 25 / DI TO C - 5 / DI,B - 30 / DI TO C - 15 / DI,B - 5 / DI TO C - 10 / DI,B TO C + 10 / DI,B TO C + 15 / DI,B - 5 / DI
+ 321  HPLOT  TO C + 20 / DI,B - 5 / DI TO C + 10 / DI,B TO C + 15 / DI,B - 5 / DI TO C + 5 / DI,B - 30 / DI TO C + 10 / DI,B - 40 / DI TO C + 3 / DI + .5,B - 35 / DI TO C - 3 / DI + .5,B - 35 / DI TO C - 10 / DI,B - 40 / DI TO C - 5 / DI,B - 30 / DI
+ 322  HPLOT C - 5 / DI,B - 33 / DI TO C - 3 / DI + .5,B - 30 / DI: HPLOT C + 5 / DI,B - 33 / DI TO C + 3 / DI + .5,B - 30 / DI: HPLOT C - 5 / DI,B - 20 / DI TO C - 5 / DI,B - 15 / DI
+ 323  HPLOT C + 5 / DI,B - 20 / DI TO C + 5 / DI,B - 15 / DI: HPLOT C - 7 / DI,B - 20 / DI TO C - 7 / DI,B - 15 / DI: HPLOT C + 7 / DI,B - 20 / DI TO C + 7 / DI,B - 15 / DI
  329  GOTO 490
- 330  HPLOT C,B TO C - 15 / DI,B TO C - 8 / DI,B - 8 / DI TO C - 8 / DI,B
-      - 15 / DI TO C - 15 / DI,B - 23 / DI TO C - 15 / DI,B - 15 / DI TO 
-     C - 23 / DI,B - 23 / DI
- 331  HPLOT  TO C - 23 / DI,B - 45 / DI TO C - 15 / DI,B - 53 / DI TO C - 
-     8 / DI,B - 53 / DI TO C - 15 / DI,B - 68 / DI TO C - 8 / DI,B - 75 / 
-     DI TO C,B - 75 / DI
- 332  HPLOT C,B TO C + 15 / DI,B TO C + 8 / DI,B - 8 / DI TO C + 8 / DI,B
-      - 15 / DI TO C + 15 / DI,B - 23 / DI TO C + 15 / DI,B - 15 / DI TO 
-     C + 23 / DI,B - 23 / DI
- 333  HPLOT  TO C + 23 / DI,B - 45 / DI TO C + 15 / DI,B - 53 / DI TO C + 
-     8 / DI,B - 53 / DI TO C + 15 / DI,B - 68 / DI TO C + 8 / DI,B - 75 / 
-     DI TO C,B - 75 / DI
- 334  HPLOT C - 15 / DI,B - 68 / DI TO C + 15 / DI,B - 68 / DI: HPLOT C - 
-     8 / DI,B - 53 / DI TO C + 8 / DI,B - 53 / DI: HPLOT C - 23 / DI,B - 
-     15 / DI TO C + 8 / DI,B - 45 / DI
- 335  HPLOT C - 8 / DI,B - 68 / DI TO C,B - 60 / DI TO C + 8 / DI,B - 68 / 
-     DI TO C + 8 / DI,B - 60 / DI TO C - 8 / DI,B - 60 / DI TO C - 8 / DI
-     ,B - 68 / DI
- 336  HPLOT C,B - 38 / DI TO C - 8 / DI,B - 38 / DI TO C + 8 / DI,B - 53 / 
-     DI TO C + 8 / DI,B - 45 / DI TO C + 15 / DI,B - 45 / DI TO C,B - 30 / 
-     DI TO C,B - 38 / DI
+ 330  HPLOT C,B TO C - 15 / DI,B TO C - 8 / DI,B - 8 / DI TO C - 8 / DI,B - 15 / DI TO C - 15 / DI,B - 23 / DI TO C - 15 / DI,B - 15 / DI TO C - 23 / DI,B - 23 / DI
+ 331  HPLOT  TO C - 23 / DI,B - 45 / DI TO C - 15 / DI,B - 53 / DI TO C - 8 / DI,B - 53 / DI TO C - 15 / DI,B - 68 / DI TO C - 8 / DI,B - 75 / DI TO C,B - 75 / DI
+ 332  HPLOT C,B TO C + 15 / DI,B TO C + 8 / DI,B - 8 / DI TO C + 8 / DI,B - 15 / DI TO C + 15 / DI,B - 23 / DI TO C + 15 / DI,B - 15 / DI TO C + 23 / DI,B - 23 / DI
+ 333  HPLOT  TO C + 23 / DI,B - 45 / DI TO C + 15 / DI,B - 53 / DI TO C + 8 / DI,B - 53 / DI TO C + 15 / DI,B - 68 / DI TO C + 8 / DI,B - 75 / DI TO C,B - 75 / DI
+ 334  HPLOT C - 15 / DI,B - 68 / DI TO C + 15 / DI,B - 68 / DI: HPLOT C - 8 / DI,B - 53 / DI TO C + 8 / DI,B - 53 / DI: HPLOT C - 23 / DI,B - 15 / DI TO C + 8 / DI,B - 45 / DI
+ 335  HPLOT C - 8 / DI,B - 68 / DI TO C,B - 60 / DI TO C + 8 / DI,B - 68 / DI TO C + 8 / DI,B - 60 / DI TO C - 8 / DI,B - 60 / DI TO C - 8 / DI,B - 68 / DI
+ 336  HPLOT C,B - 38 / DI TO C - 8 / DI,B - 38 / DI TO C + 8 / DI,B - 53 / DI TO C + 8 / DI,B - 45 / DI TO C + 15 / DI,B - 45 / DI TO C,B - 30 / DI TO C,B - 38 / DI
  339  GOTO 490
- 340  HPLOT C - 10 / DI,B - 15 / DI TO C - 10 / DI,B - 30 / DI TO C - 15 / 
-     DI,B - 20 / DI TO C - 15 / DI,B - 15 / DI TO C - 15 / DI,B TO C + 15
-      / DI,B TO C + 15 / DI,B - 15 / DI TO C - 15 / DI,B - 15 / DI
- 341  HPLOT C - 15 / DI,B - 10 / DI TO C + 15 / DI,B - 10 / DI: HPLOT C - 
-     15 / DI,B - 5 / DI TO C + 15 / DI,B - 5 / DI
- 342  HPLOT C,B - 15 / DI TO C - 5 / DI,B - 20 / DI TO C - 5 / DI,B - 35 / 
-     DI TO C + 5 / DI,B - 35 / DI TO C + 5 / DI,B - 20 / DI TO C + 10 / D
-     I,B - 15 / DI
- 343  HPLOT C - 5 / DI,B - 20 / DI TO C + 5 / DI,B - 20 / DI: HPLOT C - 5
-      / DI,B - 25 / DI TO C + 5 / DI,B - 25 / DI: HPLOT C - 5 / DI,B - 30
-      / DI TO C + 5 / DI,B - 30 / DI
- 344  HPLOT C - 10 / DI,B - 35 / DI TO C - 10 / DI,B - 40 / DI TO C - 5 / 
-     DI,B - 45 / DI TO C + 5 / DI,B - 45 / DI TO C + 10 / DI,B - 40 / DI TO 
-     C + 10 / DI,B - 35 / DI
- 345  HPLOT C - 10 / DI,B - 40 / DI TO C,B - 45 / DI TO C + 10 / DI,B - 4
-     0 / DI
- 346  HPLOT C - 5 / DI,B - 40 / DI TO C + 5 / DI,B - 40 / DI TO C + 15 / 
-     DI,B - 30 / DI TO C,B - 40 / DI TO C - 15 / DI,B - 30 / DI TO C - 5 / 
-     DI + .5,B - 40 / DI
+ 340  HPLOT C - 10 / DI,B - 15 / DI TO C - 10 / DI,B - 30 / DI TO C - 15 / DI,B - 20 / DI TO C - 15 / DI,B - 15 / DI TO C - 15 / DI,B TO C + 15 / DI,B TO C + 15 / DI,B - 15 / DI TO C - 15 / DI,B - 15 / DI
+ 341  HPLOT C - 15 / DI,B - 10 / DI TO C + 15 / DI,B - 10 / DI: HPLOT C - 15 / DI,B - 5 / DI TO C + 15 / DI,B - 5 / DI
+ 342  HPLOT C,B - 15 / DI TO C - 5 / DI,B - 20 / DI TO C - 5 / DI,B - 35 / DI TO C + 5 / DI,B - 35 / DI TO C + 5 / DI,B - 20 / DI TO C + 10 / DI,B - 15 / DI
+ 343  HPLOT C - 5 / DI,B - 20 / DI TO C + 5 / DI,B - 20 / DI: HPLOT C - 5 / DI,B - 25 / DI TO C + 5 / DI,B - 25 / DI: HPLOT C - 5 / DI,B - 30 / DI TO C + 5 / DI,B - 30 / DI
+ 344  HPLOT C - 10 / DI,B - 35 / DI TO C - 10 / DI,B - 40 / DI TO C - 5 / DI,B - 45 / DI TO C + 5 / DI,B - 45 / DI TO C + 10 / DI,B - 40 / DI TO C + 10 / DI,B - 35 / DI
+ 345  HPLOT C - 10 / DI,B - 40 / DI TO C,B - 45 / DI TO C + 10 / DI,B - 40 / DI
+ 346  HPLOT C - 5 / DI,B - 40 / DI TO C + 5 / DI,B - 40 / DI TO C + 15 / DI,B - 30 / DI TO C,B - 40 / DI TO C - 15 / DI,B - 30 / DI TO C - 5 / DI + .5,B - 40 / DI
  349  GOTO 490
- 350  HPLOT C - 20 / DI,79 - YY%(DIS) TO C - 20 / DI,B - 88 / DI TO C - 1
-     0 / DI,B - 83 / DI TO C + 10 / DI,B - 83 / DI TO C + 20 / DI,B - 88 / 
-     DI TO C + 20 / DI,79 - YY%(DIS) TO C - 20 / DI,79 - YY%(DI)
- 351  HPLOT C - 20 / DI,B - 88 / DI TO C - 30 / DI,B - 83 / DI TO C - 30 / 
-     DI,B - 78 / DI: HPLOT C + 20 / DI,B - 88 / DI TO C + 30 / DI,B - 83 / 
-     DI TO C + 40 / DI,B - 83 / DI
- 352  HPLOT C - 15 / DI,B - 86 / DI TO C - 20 / DI,B - 83 / DI TO C - 20 / 
-     DI,B - 78 / DI TO C - 30 / DI,B - 73 / DI TO C - 30 / DI,B - 68 / DI
-      TO C - 20 / DI,B - 63 / DI
- 353  HPLOT C - 10 / DI,B - 83 / DI TO C - 10 / DI,B - 58 / DI TO C,B - 5
-     0 / DI: HPLOT C + 10 / DI,B - 83 / DI TO C + 10 / DI,B - 78 / DI TO 
-     C + 20 / DI,B - 73 / DI TO C + 20 / DI,B - 40 / DI
- 354  HPLOT C + 15 / DI,B - 85 / DI TO C + 20 / DI,B - 78 / DI TO C + 30 / 
-     DI,B - 76 / DI TO C + 30 / DI,B - 60 / DI
- 355  HPLOT C,B - 83 / DI TO C,B - 73 / DI TO C + 10 / DI,B - 68 / DI TO 
-     C + 10 / DI,B - 63 / DI TO C,B - 58 / DI
+ 350  HPLOT C - 20 / DI,79 - YY%(DIS) TO C - 20 / DI,B - 88 / DI TO C - 10 / DI,B - 83 / DI TO C + 10 / DI,B - 83 / DI TO C + 20 / DI,B - 88 / DI TO C + 20 / DI,79 - YY%(DIS) TO C - 20 / DI,79 - YY%(DI)
+ 351  HPLOT C - 20 / DI,B - 88 / DI TO C - 30 / DI,B - 83 / DI TO C - 30 / DI,B - 78 / DI: HPLOT C + 20 / DI,B - 88 / DI TO C + 30 / DI,B - 83 / DI TO C + 40 / DI,B - 83 / DI
+ 352  HPLOT C - 15 / DI,B - 86 / DI TO C - 20 / DI,B - 83 / DI TO C - 20 / DI,B - 78 / DI TO C - 30 / DI,B - 73 / DI TO C - 30 / DI,B - 68 / DI TO C - 20 / DI,B - 63 / DI
+ 353  HPLOT C - 10 / DI,B - 83 / DI TO C - 10 / DI,B - 58 / DI TO C,B - 50 / DI: HPLOT C + 10 / DI,B - 83 / DI TO C + 10 / DI,B - 78 / DI TO C + 20 / DI,B - 73 / DI TO C + 20 / DI,B - 40 / DI
+ 354  HPLOT C + 15 / DI,B - 85 / DI TO C + 20 / DI,B - 78 / DI TO C + 30 / DI,B - 76 / DI TO C + 30 / DI,B - 60 / DI
+ 355  HPLOT C,B - 83 / DI TO C,B - 73 / DI TO C + 10 / DI,B - 68 / DI TO C + 10 / DI,B - 63 / DI TO C,B - 58 / DI
  359  GOTO 490
- 360  HPLOT C + 5 / DI + .5,B - 10 / DI TO C - 5 / DI + .5,B - 10 / DI TO 
-     C,B - 15 / DI TO C + 10 / DI,B - 20 / DI TO C + 5 / DI + .5,B - 15 / 
-     DI TO C + 5 / DI + .5,B - 10 / DI
- 361  HPLOT  TO C + 7 / DI + .5,B - 6 / DI TO C + 5 / DI + .5,B - 3 / DI TO 
-     C - 5 / DI + .5,B - 3 / DI TO C - 7 / DI + .5,B - 6 / DI TO C - 5 / 
-     DI + .5,B - 10 / DI
- 362  HPLOT C + 2 / DI + .5,B - 3 / DI TO C + 5 / DI + .5,B TO C + 8 / DI
-     ,B: HPLOT C - 2 / DI + .5,B - 3 / DI TO C - 5 / DI + .5,B TO C - 8 / 
-     DI,B: HPLOT C + 3 / DI + .5,B - 8 / DI: HPLOT C - 3 / DI + .5,B - 8 / 
-     DI: HPLOT C + 3 / DI + .5,B - 5 / DI TO C - 3 / DI + .5,B - 5 / DI
+ 360  HPLOT C + 5 / DI + .5,B - 10 / DI TO C - 5 / DI + .5,B - 10 / DI TO C,B - 15 / DI TO C + 10 / DI,B - 20 / DI TO C + 5 / DI + .5,B - 15 / DI TO C + 5 / DI + .5,B - 10 / DI
+ 361  HPLOT  TO C + 7 / DI + .5,B - 6 / DI TO C + 5 / DI + .5,B - 3 / DI TO C - 5 / DI + .5,B - 3 / DI TO C - 7 / DI + .5,B - 6 / DI TO C - 5 / DI + .5,B - 10 / DI
+ 362  HPLOT C + 2 / DI + .5,B - 3 / DI TO C + 5 / DI + .5,B TO C + 8 / DI,B: HPLOT C - 2 / DI + .5,B - 3 / DI TO C - 5 / DI + .5,B TO C - 8 / DI,B: HPLOT C + 3 / DI + .5,B - 8 / DI: HPLOT C - 3 / DI + .5,B - 8 / DI: HPLOT C + 3 / DI + .5,B - 5 / DI TO C - 3 / DI + .5,B - 5 / DI
  363  GOTO 490
- 370  HPLOT 139 - 10 / DIS,PER%(DIS,3) TO 139 - 10 / DIS,PER%(DIS,3) - 10
-      / DIS TO 139 + 10 / DIS,PER%(DIS,3) - 10 / DIS TO 139 + 10 / DIS,PE
-     R%(DIS,3) TO 139 - 10 / DIS,PER%(DIS,3)
- 371  HPLOT 139 - 10 / DIS,PER%(DIS,3) - 10 / DIS TO 139 - 5 / DIS,PER%(D
-     IS,3) - 15 / DIS TO 139 + 15 / DIS,PER%(DIS,3) - 15 / DIS TO 139 + 1
-     5 / DIS,PER%(DIS,3) - 5 / DIS TO 139 + 10 / DIS,PER%(DIS,3)
- 372  HPLOT 139 + 10 / DIS,PER%(DIS,3) - 10 / DIS TO 139 + 15 / DIS,PER%(
-     DIS,3) - 15 / DIS
+ 370  HPLOT 139 - 10 / DIS,PER%(DIS,3) TO 139 - 10 / DIS,PER%(DIS,3) - 10 / DIS TO 139 + 10 / DIS,PER%(DIS,3) - 10 / DIS TO 139 + 10 / DIS,PER%(DIS,3) TO 139 - 10 / DIS,PER%(DIS,3)
+ 371  HPLOT 139 - 10 / DIS,PER%(DIS,3) - 10 / DIS TO 139 - 5 / DIS,PER%(DIS,3) - 15 / DIS TO 139 + 15 / DIS,PER%(DIS,3) - 15 / DIS TO 139 + 15 / DIS,PER%(DIS,3) - 5 / DIS TO 139 + 10 / DIS,PER%(DIS,3)
+ 372  HPLOT 139 + 10 / DIS,PER%(DIS,3) - 10 / DIS TO 139 + 15 / DIS,PER%(DIS,3) - 15 / DIS
  373  GOTO 490
- 380  HPLOT C - 14 / DI,B - 46 / DI TO C - 12 / DI,B - 37 / DI TO C - 20 / 
-     DI,B - 32 / DI TO C - 30 / DI,B - 32 / DI TO C - 22 / DI,B - 24 / DI
-      TO C - 40 / DI,B - 17 / DI TO C - 40 / DI,B - 7 / DI TO C - 38 / DI
-     ,B - 5 / DI TO C - 40 / DI,B - 3 / DI TO C - 40 / DI,B
- 381  HPLOT  TO C - 36 / DI,B TO C - 34 / DI,B - 2 / DI TO C - 32 / DI,B TO 
-     C - 28 / DI,B TO C - 28 / DI,B - 3 / DI TO C - 30 / DI,B - 5 / DI TO 
-     C - 28 / DI,B - 7 / DI TO C - 28 / DI,B - 15 / DI TO C,B - 27 / DI
- 382  HPLOT C + 14 / DI,B - 46 / DI TO C + 12 / DI,B - 37 / DI TO C + 20 / 
-     DI,B - 32 / DI TO C + 30 / DI,B - 32 / DI TO C + 22 / DI,B - 24 / DI
-      TO C + 40 / DI,B - 17 / DI TO C + 40 / DI,B - 7 / DI TO C + 38 / DI
-     ,B - 5 / DI TO C + 40 / DI,B - 3 / DI TO C + 40 / DI,B
- 383  HPLOT  TO C + 36 / DI,B TO C + 34 / DI,B - 2 / DI TO C + 32 / DI,B TO 
-     C + 28 / DI,B TO C + 28 / DI,B - 3 / DI TO C + 30 / DI,B - 5 / DI TO 
-     C + 28 / DI,B - 7 / DI TO C + 28 / DI,B - 15 / DI TO C,B - 27 / DI
- 384  HPLOT C + 6 / DI,B - 48 / DI TO C + 38 / DI,B - 41 / DI TO C + 40 / 
-     DI,B - 42 / DI TO C + 18 / DI,B - 56 / DI TO C + 12 / DI,B - 56 / DI
-      TO C + 10 / DI,B - 57 / DI TO C + 8 / DI,B - 56 / DI TO C - 8 / DI,
-     B - 56 / DI TO C - 10 / DI,B - 58 / DI TO C + 14 / DI,B - 58 / DI TO 
-     C + 16 / DI,B - 59 / DI
- 385  HPLOT  TO C + 8 / DI,B - 63 / DI TO C + 6 / DI,B - 63 / DI TO C + 2
-      / DI + .5,B - 70 / DI TO C + 2 / DI + .5,B - 63 / DI TO C - 2 / DI + 
-     .5,B - 63 / DI TO C - 2 / DI + .5,B - 70 / DI TO C - 6 / DI,B - 63 / 
-     DI TO C - 8 / DI,B - 63 / DI TO C - 16 / DI,B - 59 / DI TO C - 14 / 
-     DI,B - 58 / DI
- 386  HPLOT  TO C - 10 / DI,B - 57 / DI TO C - 12 / DI,B - 56 / DI TO C - 
-     18 / DI,B - 56 / DI TO C - 36 / DI,B - 47 / DI TO C - 36 / DI,B - 39
-      / DI TO C - 28 / DI,B - 41 / DI TO C - 28 / DI,B - 46 / DI TO C - 2
-     0 / DI,B - 50 / DI TO C - 18 / DI,B - 50 / DI TO C - 14 / DI,B - 46 / 
-     DI
+ 380  HPLOT C - 14 / DI,B - 46 / DI TO C - 12 / DI,B - 37 / DI TO C - 20 / DI,B - 32 / DI TO C - 30 / DI,B - 32 / DI TO C - 22 / DI,B - 24 / DI TO C - 40 / DI,B - 17 / DI TO C - 40 / DI,B - 7 / DI TO C - 38 / DI,B - 5 / DI TO C - 40 / DI,B - 3 / DI TO C - 40 / DI,B
+ 381  HPLOT  TO C - 36 / DI,B TO C - 34 / DI,B - 2 / DI TO C - 32 / DI,B TO C - 28 / DI,B TO C - 28 / DI,B - 3 / DI TO C - 30 / DI,B - 5 / DI TO C - 28 / DI,B - 7 / DI TO C - 28 / DI,B - 15 / DI TO C,B - 27 / DI
+ 382  HPLOT C + 14 / DI,B - 46 / DI TO C + 12 / DI,B - 37 / DI TO C + 20 / DI,B - 32 / DI TO C + 30 / DI,B - 32 / DI TO C + 22 / DI,B - 24 / DI TO C + 40 / DI,B - 17 / DI TO C + 40 / DI,B - 7 / DI TO C + 38 / DI,B - 5 / DI TO C + 40 / DI,B - 3 / DI TO C + 40 / DI,B
+ 383  HPLOT  TO C + 36 / DI,B TO C + 34 / DI,B - 2 / DI TO C + 32 / DI,B TO C + 28 / DI,B TO C + 28 / DI,B - 3 / DI TO C + 30 / DI,B - 5 / DI TO C + 28 / DI,B - 7 / DI TO C + 28 / DI,B - 15 / DI TO C,B - 27 / DI
+ 384  HPLOT C + 6 / DI,B - 48 / DI TO C + 38 / DI,B - 41 / DI TO C + 40 / DI,B - 42 / DI TO C + 18 / DI,B - 56 / DI TO C + 12 / DI,B - 56 / DI TO C + 10 / DI,B - 57 / DI TO C + 8 / DI,B - 56 / DI TO C - 8 / DI,B - 56 / DI TO C - 10 / DI,B - 58 / DI TO C + 14 / DI,B - 58 / DI TO C + 16 / DI,B - 59 / DI
+ 385  HPLOT  TO C + 8 / DI,B - 63 / DI TO C + 6 / DI,B - 63 / DI TO C + 2 / DI + .5,B - 70 / DI TO C + 2 / DI + .5,B - 63 / DI TO C - 2 / DI + .5,B - 63 / DI TO C - 2 / DI + .5,B - 70 / DI TO C - 6 / DI,B - 63 / DI TO C - 8 / DI,B - 63 / DI TO C - 16 / DI,B - 59 / DI TO C - 14 / DI,B - 58 / DI
+ 386  HPLOT  TO C - 10 / DI,B - 57 / DI TO C - 12 / DI,B - 56 / DI TO C - 18 / DI,B - 56 / DI TO C - 36 / DI,B - 47 / DI TO C - 36 / DI,B - 39 / DI TO C - 28 / DI,B - 41 / DI TO C - 28 / DI,B - 46 / DI TO C - 20 / DI,B - 50 / DI TO C - 18 / DI,B - 50 / DI TO C - 14 / DI,B - 46 / DI
  387  GOTO 3087
- 390  HPLOT C + 6 / DI,B - 60 / DI TO C + 30 / DI,B - 90 / DI TO C + 60 / 
-     DI,B - 30 / DI TO C + 60 / DI,B - 10 / DI TO C + 30 / DI,B - 40 / DI
-      TO C + 15 / DI,B - 40 / DI
- 391  HPLOT C - 6 / DI,B - 60 / DI TO C - 30 / DI,B - 90 / DI TO C - 60 / 
-     DI,B - 30 / DI TO C - 60 / DI,B - 10 / DI TO C - 30 / DI,B - 40 / DI
-      TO C - 15 / DI,B - 40 / DI
- 392  HPLOT C,B - 25 / DI TO C + 6 / DI,B - 25 / DI TO C + 10 / DI,B - 20
-      / DI TO C + 12 / DI,B - 10 / DI TO C + 10 / DI,B - 6 / DI TO C + 10
-      / DI,B TO C + 14 / DI,B TO C + 15 / DI,B - 5 / DI TO C + 16 / DI,B TO 
-     C + 20 / DI,B
- 393  HPLOT  TO C + 20 / DI,B - 6 / DI TO C + 18 / DI,B - 10 / DI TO C + 
-     18 / DI,B - 20 / DI TO C + 15 / DI,B - 30 / DI TO C + 15 / DI,B - 45
-      / DI TO C + 40 / DI,B - 60 / DI TO C + 40 / DI,B - 70 / DI
- 394  HPLOT  TO C + 10 / DI,B - 55 / DI TO C + 6 / DI,B - 60 / DI TO C + 
-     10 / DI,B - 74 / DI TO C + 6 / DI,B - 80 / DI TO C + 4 / DI + .5,B - 
-     80 / DI TO C + 3 / DI + .5,B - 82 / DI TO C + 2 / DI + .5,B - 80 / D
-     I TO C,B - 80 / DI
- 395  HPLOT C,B - 25 / DI TO C - 6 / DI,B - 25 / DI TO C - 10 / DI,B - 20
-      / DI TO C - 12 / DI,B - 10 / DI TO C - 10 / DI,B - 6 / DI TO C - 10
-      / DI,B TO C - 14 / DI,B TO C - 15 / DI,B - 5 / DI TO C - 16 / DI,B TO 
-     C - 20 / DI,B
- 396  HPLOT  TO C - 20 / DI,B - 6 / DI TO C - 18 / DI,B - 10 / DI TO C - 
-     18 / DI,B - 20 / DI TO C - 15 / DI,B - 30 / DI TO C - 15 / DI,B - 45
-      / DI TO C - 40 / DI,B - 60 / DI TO C - 40 / DI,B - 70 / DI
- 397  HPLOT  TO C - 10 / DI,B - 55 / DI TO C - 6 / DI,B - 60 / DI TO C - 
-     10 / DI,B - 74 / DI TO C - 6 / DI,B - 80 / DI TO C - 4 / DI + .5,B - 
-     80 / DI TO C - 3 / DI + .5,B - 82 / DI TO C - 2 / DI + .5,B - 80 / D
-     I TO C,B - 80 / DI
- 398  HPLOT C - 6 / DI,B - 25 / DI TO C,B - 6 / DI TO C + 10 / DI,B TO C + 
-     4 / DI + .5,B - 8 / DI TO C + 6 / DI,B - 25 / DI: HPLOT C - 40 / DI,
-     B - 64 / DI TO C - 40 / DI,B - 90 / DI TO C - 52 / DI,B - 80 / DI TO 
-     C - 52 / DI,B - 40 / DI
- 399  HPLOT C + 40 / DI,B - 86 / DI TO C + 38 / DI,B - 92 / DI TO C + 42 / 
-     DI,B - 92 / DI TO C + 40 / DI,B - 86 / DI TO C + 40 / DI,B - 50 / DI
-     
- 400  HPLOT C + 4 / DI + .5,B - 70 / DI TO C + 6 / DI,B - 74 / DI: HPLOT 
-     C - 4 / DI + .5,B - 70 / DI TO C - 6 / DI,B - 74 / DI: HPLOT C,B - 6
-     4 / DI TO C,B - 60 / DI: GOTO 490
+ 390  HPLOT C + 6 / DI,B - 60 / DI TO C + 30 / DI,B - 90 / DI TO C + 60 / DI,B - 30 / DI TO C + 60 / DI,B - 10 / DI TO C + 30 / DI,B - 40 / DI TO C + 15 / DI,B - 40 / DI
+ 391  HPLOT C - 6 / DI,B - 60 / DI TO C - 30 / DI,B - 90 / DI TO C - 60 / DI,B - 30 / DI TO C - 60 / DI,B - 10 / DI TO C - 30 / DI,B - 40 / DI TO C - 15 / DI,B - 40 / DI
+ 392  HPLOT C,B - 25 / DI TO C + 6 / DI,B - 25 / DI TO C + 10 / DI,B - 20 / DI TO C + 12 / DI,B - 10 / DI TO C + 10 / DI,B - 6 / DI TO C + 10 / DI,B TO C + 14 / DI,B TO C + 15 / DI,B - 5 / DI TO C + 16 / DI,B TO C + 20 / DI,B
+ 393  HPLOT  TO C + 20 / DI,B - 6 / DI TO C + 18 / DI,B - 10 / DI TO C + 18 / DI,B - 20 / DI TO C + 15 / DI,B - 30 / DI TO C + 15 / DI,B - 45 / DI TO C + 40 / DI,B - 60 / DI TO C + 40 / DI,B - 70 / DI
+ 394  HPLOT  TO C + 10 / DI,B - 55 / DI TO C + 6 / DI,B - 60 / DI TO C + 10 / DI,B - 74 / DI TO C + 6 / DI,B - 80 / DI TO C + 4 / DI + .5,B - 80 / DI TO C + 3 / DI + .5,B - 82 / DI TO C + 2 / DI + .5,B - 80 / DI TO C,B - 80 / DI
+ 395  HPLOT C,B - 25 / DI TO C - 6 / DI,B - 25 / DI TO C - 10 / DI,B - 20 / DI TO C - 12 / DI,B - 10 / DI TO C - 10 / DI,B - 6 / DI TO C - 10 / DI,B TO C - 14 / DI,B TO C - 15 / DI,B - 5 / DI TO C - 16 / DI,B TO C - 20 / DI,B
+ 396  HPLOT  TO C - 20 / DI,B - 6 / DI TO C - 18 / DI,B - 10 / DI TO C - 18 / DI,B - 20 / DI TO C - 15 / DI,B - 30 / DI TO C - 15 / DI,B - 45 / DI TO C - 40 / DI,B - 60 / DI TO C - 40 / DI,B - 70 / DI
+ 397  HPLOT  TO C - 10 / DI,B - 55 / DI TO C - 6 / DI,B - 60 / DI TO C - 10 / DI,B - 74 / DI TO C - 6 / DI,B - 80 / DI TO C - 4 / DI + .5,B - 80 / DI TO C - 3 / DI + .5,B - 82 / DI TO C - 2 / DI + .5,B - 80 / DI TO C,B - 80 / DI
+ 398  HPLOT C - 6 / DI,B - 25 / DI TO C,B - 6 / DI TO C + 10 / DI,B TO C + 4 / DI + .5,B - 8 / DI TO C + 6 / DI,B - 25 / DI: HPLOT C - 40 / DI,B - 64 / DI TO C - 40 / DI,B - 90 / DI TO C - 52 / DI,B - 80 / DI TO C - 52 / DI,B - 40 / DI
+ 399  HPLOT C + 40 / DI,B - 86 / DI TO C + 38 / DI,B - 92 / DI TO C + 42 / DI,B - 92 / DI TO C + 40 / DI,B - 86 / DI TO C + 40 / DI,B - 50 / DI
+ 400  HPLOT C + 4 / DI + .5,B - 70 / DI TO C + 6 / DI,B - 74 / DI: HPLOT C - 4 / DI + .5,B - 70 / DI TO C - 6 / DI,B - 74 / DI: HPLOT C,B - 64 / DI TO C,B - 60 / DI: GOTO 490
  490  IF EN = 1 THEN EN = 0: RETURN 
  491 DIS = DIS + 1: GOTO 202
  500 ZZ =  RND ( -  ABS (LN) - TX * 10 - TY * 1000 + INOUT * 31.4)
  501  FOR X = 1 TO 9: FOR Y = 1 TO 9:DNG%(X,Y) = 0: NEXT : NEXT 
- 510  FOR X = 0 TO 10:DNG%(X,0) = 1:DNG%(X,10) = 1:DNG%(0,X) = 1:DNG%(10,
-     X) = 1: NEXT 
- 520  FOR X = 2 TO 8 STEP 2: FOR Y = 1 TO 9:DNG%(X,Y) = 1:DNG(Y,X) = 1: NEXT 
-     : NEXT 
+ 510  FOR X = 0 TO 10:DNG%(X,0) = 1:DNG%(X,10) = 1:DNG%(0,X) = 1:DNG%(10,X) = 1: NEXT 
+ 520  FOR X = 2 TO 8 STEP 2: FOR Y = 1 TO 9:DNG%(X,Y) = 1:DNG(Y,X) = 1: NEXT : NEXT 
  530  FOR X = 2 TO 8 STEP 2: FOR Y = 1 TO 9 STEP 2
  540  IF  RND (1) > .95 THEN DNG%(X,Y) = 2
  541  IF  RND (1) > .95 THEN DNG%(Y,X) = 2
@@ -353,10 +159,8 @@
  548  IF  RND (1) > .94 THEN DNG%(X,Y) = 5
  549  IF  RND (1) > .94 THEN DNG%(Y,X) = 5
  568  NEXT : NEXT 
- 569 DNG%(2,1) = 0: IF INOUT / 2 =  INT (INOUT / 2) THEN DNG%(7,3) = 7:DN
-     G%(3,7) = 8
- 570  IF INOUT / 2 <  >  INT (INOUT / 2) THEN DNG%(7,3) = 8:DNG%(3,7) = 7
-     
+ 569 DNG%(2,1) = 0: IF INOUT / 2 =  INT (INOUT / 2) THEN DNG%(7,3) = 7:DNG%(3,7) = 8
+ 570  IF INOUT / 2 <  >  INT (INOUT / 2) THEN DNG%(7,3) = 8:DNG%(3,7) = 
  580  IF INOUT = 1 THEN DNG%(1,1) = 8:DNG%(7,3) = 0
  585  GOSUB 2000
  590  RETURN 
